@@ -3,6 +3,7 @@ package fr.poseidonj.app1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,5 +39,48 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(intent);
         });
+    }
+
+    public void btnImcClick(View view) {
+        Intent intent = new Intent(MainActivity.this, CalcIMC.class);
+        startActivity(intent);
+    }
+
+    public void openUrlClick(View view) {
+        String url="https://www.google.fr";
+        Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+
+    }
+
+    public void callClick(View view) {
+        Intent intent=new Intent(Intent.ACTION_CALL, Uri.parse("tel:0000000000"));
+        startActivity(intent);
+    }
+
+    public void smsClick(View view) {
+        Intent intent=new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:0000000000"));
+        startActivity(intent);
+    }
+
+    public void btnIntentForResultClick(View view) {
+        Intent intent = new Intent(this, IntentForResult.class);
+        startActivity(intent);
+    }
+
+    public void btnEmailClick(View view) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:lmagnier@dawan.fr"));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT,"sujet du mail...");
+        emailIntent.putExtra(Intent.EXTRA_TEXT,"body du mail....");
+
+        //startActivity(emailIntent); //syntaxe outlook - option1
+
+        //Syntaxe outlook - option2
+        //startActivity(Intent.createChooser(emailIntent,"Envoi d'un mail outlook"));
+
+        //Syntaxe si compte gmail configuré sur le tél:
+        Intent gmailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:?subject=test email&to=lmagnier@dawan.fr&body=contenu du mail.."));
+        startActivity(gmailIntent);
+
     }
 }

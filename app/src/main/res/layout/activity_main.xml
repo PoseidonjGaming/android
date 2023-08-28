@@ -17,6 +17,32 @@
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="btnImcClick"
         android:text="Explicit intent" />
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openUrlClick"
+        android:text="Open url" />
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="callClick"
+        android:text="Call" />
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="smsClick"
+        android:text="SMS" />
+
+    <Button
+        android:id="@+id/intentForRes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnIntentForResultClick"
+        android:text="Result intent" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
