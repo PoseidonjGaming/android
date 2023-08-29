@@ -51,10 +51,6 @@ public class ListActivity extends AppCompatActivity {
             StringDialog dialog=new StringDialog();
             dialog.show(getSupportFragmentManager(), "dialog1");
         });
-
-
-
-
     }
 
     public void addStringElement(String toString) {

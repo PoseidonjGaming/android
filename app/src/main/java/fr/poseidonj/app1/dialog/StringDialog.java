@@ -34,13 +34,19 @@ public class StringDialog extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup viewGroup, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_add_to_list, viewGroup, false);
 
-        input=view.findViewById(R.id.inputName);
-        add= view.findViewById(R.id.button);
+        input = view.findViewById(R.id.inputName);
+        add = view.findViewById(R.id.button);
 
         add.setOnClickListener(view1 -> {
-            ((ListActivity)context).addStringElement(input.getText().toString());
+            ((ListActivity) context).addStringElement(input.getText().toString());
             Objects.requireNonNull(getDialog()).dismiss();
         });
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getDialog().getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 }
