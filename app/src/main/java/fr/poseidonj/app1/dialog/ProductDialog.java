@@ -47,6 +47,27 @@ public class ProductDialog extends DialogFragment {
         inputDesc.setText(product.getDesc());
         inputPrice.setText(String.valueOf(product.getPrice()));
 
+        cancel= view.findViewById(R.id.buttonCancel);
+        add= view.findViewById(R.id.buttonAdd);
+        delete= view.findViewById(R.id.buttonDelete);
+
+
+        add.setOnClickListener(view1 ->  {
+            ((ListActivity) context).addProductElement(new Product(Integer.parseInt(inputId.getText().toString()), inputDesc.getText().toString(),Double.parseDouble(inputId.getText().toString())));
+            Objects.requireNonNull(getDialog()).dismiss();
+        });
+
+        delete.setOnClickListener(view1 -> {
+            ((ListActivity) context).deleteProductElement(product);
+            Objects.requireNonNull(getDialog()).dismiss();
+        });
+
+        cancel.setOnClickListener(view1 -> {
+            Objects.requireNonNull(getDialog()).dismiss();
+        });
+
+
+
         return view;
     }
 

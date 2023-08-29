@@ -58,7 +58,7 @@ public class ListActivity extends AppCompatActivity {
     }
 
     private void fillProduct() {
-        List<Product> lst = Arrays.asList(new Product(1, "test1", 20), new Product(2, "test3", 20), new Product(3, "test2", 20));
+        List<Product> lst = new ArrayList<>(Arrays.asList(new Product(1, "test1", 20), new Product(2, "test3", 20), new Product(3, "test2", 20)));
         productArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lst);
         listView.setAdapter(productArrayAdapter);
         listView.setOnItemClickListener((adapterView, view, x, y) -> {
@@ -75,5 +75,16 @@ public class ListActivity extends AppCompatActivity {
     public void addStringElement(String toString) {
         stringAdapter.add(toString);
         stringAdapter.notifyDataSetChanged();
+    }
+
+    public void addProductElement(Product product) {
+        productArrayAdapter.add(product);
+
+        productArrayAdapter.notifyDataSetChanged();
+    }
+
+    public void deleteProductElement(Product product) {
+        productArrayAdapter.remove(product);
+        productArrayAdapter.notifyDataSetChanged();
     }
 }
