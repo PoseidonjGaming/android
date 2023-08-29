@@ -128,4 +128,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this, ListActivity.class);
         startActivity(intent);
     }
+
+    public void listCustomAdapterClick(View view) {
+        startActivity(new Intent(this, ListCustomAdaptor.class));
+    }
 }

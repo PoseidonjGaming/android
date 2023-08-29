@@ -63,5 +63,11 @@
         android:onClick="listClick"
         android:text="@string/button" />
 
+    <Button
+        android:id="@+id/listCustomAdapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="listCustomAdapterClick"
+        android:text="@string/button" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
