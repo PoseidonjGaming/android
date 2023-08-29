@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -21,7 +20,6 @@ import android.widget.Toast;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Objects;
@@ -124,5 +122,10 @@ public class MainActivity extends AppCompatActivity {
     public void clickCam(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         imageResult.launch(intent);
+    }
+
+    public void listClick(View view) {
+        Intent intent=new Intent(this, ListActivity.class);
+        startActivity(intent);
     }
 }
