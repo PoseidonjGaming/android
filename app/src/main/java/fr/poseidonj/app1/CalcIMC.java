@@ -35,10 +35,7 @@ public class CalcIMC extends AppCompatActivity {
 
     public void btnImcClick(View view) {
         try {
-            double poids = Double.parseDouble(intputPoids.getText().toString());
-            double taille = Double.parseDouble(inputTaille.getText().toString());
-
-            double imc = poids / Math.pow((rdCM.isChecked())?taille/100: taille,2);
+            double imc = Double.parseDouble(intputPoids.getText().toString()) / Math.pow((rdCM.isChecked())?Double.parseDouble(inputTaille.getText().toString())/100: Double.parseDouble(inputTaille.getText().toString()),2);
             result.setText(new DecimalFormat("#.##").format(imc));
             InputStream stream=getAssets().open("imc.html");
             Scanner scanner=new Scanner(stream, "utf-8").useDelimiter("\\A");
