@@ -62,19 +62,11 @@ public class ListActivity extends AppCompatActivity {
         productArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lst);
         listView.setAdapter(productArrayAdapter);
         listView.setOnItemClickListener((adapterView, view, x, y) -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Confirmer la suppression").setMessage("Sure?")
-                    .setPositiveButton(
-                            "yes", (dialogInterface, i) -> {
-                                productArrayAdapter.remove(productArrayAdapter.getItem(x));
-                                productArrayAdapter.notifyDataSetChanged();
-                                dialogInterface.dismiss();
-                            })
-                    .setNegativeButton("no", (dialogInterface, i) -> dialogInterface.cancel());
-            builder.create().show();
+            ProductDialog dialog = new ProductDialog(productArrayAdapter.getItem(x));
+            dialog.show(getSupportFragmentManager(), "dialog1");
         });
         add.setOnClickListener(view -> {
-            ProductDialog dialog = new ProductDialog();
+            ProductDialog dialog = new ProductDialog(new Product());
             dialog.show(getSupportFragmentManager(), "dialog1");
         });
 
