@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     Button btnLife;
     ActivityResultLauncher<Intent> imageResult;
@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+        btnExit();
     }
 
     public void btnImcClick(View view) {
@@ -131,5 +132,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void listCustomAdapterClick(View view) {
         startActivity(new Intent(this, ListCustomAdaptor.class));
+    }
+
+    public void sharedPrefClick(View view) {
+        startActivity(new Intent(this, SharedPreferenceActivity.class));
     }
 }
