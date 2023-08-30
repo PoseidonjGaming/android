@@ -137,4 +137,16 @@ public class MainActivity extends BaseActivity {
     public void sharedPrefClick(View view) {
         startActivity(new Intent(this, SharedPreferenceActivity.class));
     }
+
+    public void externalClick(View view) {
+
+    }
+
+    public void setAuthClick(View view) {
+        startActivity(new Intent(this, AuthActivity.class));
+    }
+
+    public void bddClick(View view) {
+        startActivity(new Intent(this, DBActivity.class));
+    }
 }

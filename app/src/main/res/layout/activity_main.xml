@@ -77,18 +77,38 @@
                 android:text="@string/button" />
 
             <Button
-            android:id="@+id/listCustomAdapter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="listCustomAdapterClick"
-            android:text="@string/button" />
+                android:id="@+id/listCustomAdapter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="listCustomAdapterClick"
+                android:text="@string/button" />
 
             <Button
                 android:id="@+id/sharedPref"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="sharedPrefClick"
-                android:text="@string/button" />
+                android:text="sharedPref" />
+
+            <Button
+                android:id="@+id/externalStorage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="externalClick"
+                android:text="externalStorage" />
+
+            <Button
+                android:id="@+id/setAuth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="setAuthClick"
+                android:text="setAuth" />
+            <Button
+                android:id="@+id/bdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="bddClick"
+                android:text="bdd" />
         </LinearLayout>
 
 
