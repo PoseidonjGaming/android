@@ -149,4 +149,8 @@ public class MainActivity extends BaseActivity {
     public void bddClick(View view) {
         startActivity(new Intent(this, DBActivity.class));
     }
+
+    public void apiClick(View view) {
+        startActivity(new Intent(this, ApiActivity.class));
+    }
 }

@@ -109,6 +109,12 @@
                 android:layout_height="wrap_content"
                 android:onClick="bddClick"
                 android:text="bdd" />
+            <Button
+                android:id="@+id/api"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="apiClick"
+                android:text="api" />
         </LinearLayout>
 
 
