@@ -16,6 +16,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.poseidonj.app1.entity.User;
@@ -37,14 +38,14 @@ public class ApiActivity extends AppCompatActivity {
         btnCallApi=findViewById(R.id.btnCallApi);
 
         adapter=new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, users);
-
+        users=new ArrayList<>();
         btnCallApi.setOnClickListener(v -> {
             RequestQueue requestQueue= Volley.newRequestQueue(this);
-            JsonArrayRequest json=new JsonArrayRequest(Request.Method.GET, "http://127.0.0.1:8081/user/list", null,response -> {
+            JsonArrayRequest json=new JsonArrayRequest(Request.Method.GET, "http://192.168.56.1:8081/user/list", null,response -> {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject jsonObject=response.getJSONObject(i);
-                        users.add(new User(jsonObject.getInt("id"), jsonObject.getString("username"), jsonObject.getString("role"),jsonObject.getString("password")));
+                        users.add(new User(jsonObject.getInt("id"), jsonObject.getString("username"), jsonObject.getString("roles"),jsonObject.getString("password")));
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }

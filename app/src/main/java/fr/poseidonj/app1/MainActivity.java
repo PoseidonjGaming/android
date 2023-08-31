@@ -5,11 +5,14 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DownloadManager;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +26,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Objects;
+
+import fr.poseidonj.app1.reciever.CustomReceiver;
 
 public class MainActivity extends BaseActivity {
 
@@ -56,7 +61,7 @@ public class MainActivity extends BaseActivity {
             startActivity(intent);
         });
 
-        wv=findViewById(R.id.iv);
+        wv = findViewById(R.id.iv);
 
         imageResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -64,9 +69,9 @@ public class MainActivity extends BaseActivity {
                         assert result.getData() != null;
                         wv.setImageBitmap((Bitmap) Objects.requireNonNull(result.getData().getExtras()).get("data"));
                         try {
-                            File file=new File(getFilesDir()+"/test.png");
-                            OutputStream stream=new BufferedOutputStream(new FileOutputStream(file));
-                            ((Bitmap) Objects.requireNonNull(result.getData().getExtras().get("data"))).compress(Bitmap.CompressFormat.PNG, 90,stream);
+                            File file = new File(getFilesDir() + "/test.png");
+                            OutputStream stream = new BufferedOutputStream(new FileOutputStream(file));
+                            ((Bitmap) Objects.requireNonNull(result.getData().getExtras().get("data"))).compress(Bitmap.CompressFormat.PNG, 90, stream);
                             stream.close();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
@@ -74,6 +79,8 @@ public class MainActivity extends BaseActivity {
                     }
                 });
         btnExit();
+
+        registerReceiver(new CustomReceiver(), new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED));
     }
 
     public void btnImcClick(View view) {
@@ -126,7 +133,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void listClick(View view) {
-        Intent intent=new Intent(this, ListActivity.class);
+        Intent intent = new Intent(this, ListActivity.class);
         startActivity(intent);
     }
 
@@ -152,5 +159,36 @@ public class MainActivity extends BaseActivity {
 
     public void apiClick(View view) {
         startActivity(new Intent(this, ApiActivity.class));
+    }
+
+    public void bdrClick(View view) {
+
+    }
+
+    public void bdr2Click(View view) {
+        Intent intent = new Intent();
+        intent.setAction("action");
+        intent.setPackage("fr.poseidonj.app1");
+        intent.putExtra("data", "test");
+
+        sendBroadcast(intent);
+    }
+
+    public void dlClick(View view) {
+        DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+
+        //https://redirector.gvt1.com/edgedl/android/studio/install/2022.3.1.19/android-studio-2022.3.1.19-windows.exe
+
+        DownloadManager.Request request=new DownloadManager.Request(Uri.parse("https://redirector.gvt1.com/edgedl/android/studio/install/2022.3.1.19/android-studio-2022.3.1.19-windows.exe"));
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "rep");
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+        request.setAllowedOverRoaming(false);
+
+        downloadManager.enqueue(request);
+
+    }
+
+    public void showdlClick(View view) {
+        startActivity(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS));
     }
 }

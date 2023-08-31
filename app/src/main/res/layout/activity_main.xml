@@ -115,6 +115,30 @@
                 android:layout_height="wrap_content"
                 android:onClick="apiClick"
                 android:text="api" />
+            <Button
+                android:id="@+id/bdr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="bdrClick"
+                android:text="bdr" />
+            <Button
+                android:id="@+id/bdr2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="bdr2Click"
+                android:text="bdr2" />
+            <Button
+                android:id="@+id/dl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="dlClick"
+                android:text="dl" />
+            <Button
+                android:id="@+id/showdl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="showdlClick"
+                android:text="showdl" />
         </LinearLayout>
 
 
